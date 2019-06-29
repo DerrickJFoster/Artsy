@@ -1,6 +1,9 @@
 {
   "name": "artsy",
   "version": "1.0.0",
+  "engines": {
+  "node": "12.3.1"
+},
   "description": "kickstART",
   "main": "server.js",
   "dependencies": {
