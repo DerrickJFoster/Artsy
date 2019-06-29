@@ -1,2 +1,2 @@
 # Artsy
-![App Diagram]('Project 3 App Diagram.png')
+![App Diagram](./Project 3 App Diagram.png)
