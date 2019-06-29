@@ -50,3 +50,7 @@ app.use(session({
 app.listen(PORT, () => {
   console.log("Ground  Control to Major Tom on port:", PORT);
 })
+
+app.get('/', (req, res) => {
+  res.redirect('/art')
+})
