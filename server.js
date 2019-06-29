@@ -17,7 +17,7 @@ const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/' + `kickstart-
 mongoose.connection.on('error', err => console.log(err.message + ' is Mongod not running?'))
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
 //success
-mongoose.connect('mongodb://localhost:27017/kickstART', { useNewUrlParser: true })
+mongoose.connect(mongoURI, { useNewUrlParser: true })
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongoose...')
 })
