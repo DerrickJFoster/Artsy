@@ -4,7 +4,7 @@ const app = express()
 require('dotenv').config()
 const mongoose = require('mongoose')
 const cors = require('cors')
-
+const artController = require('./controllers/art.js')
 //Configuration
 const PORT = process.env.PORT
 const mongoURI = process.env.MONGODB_URI
@@ -21,9 +21,22 @@ mongoose.connection.once('open', ()=>{
 })
 
 
-app.get('/kickstART', (req, res) => {
-  res.send("Major Tom to Ground Control")
-})
+//CORS
+const whitelist = ['http://localhost:3000'] //heroku link
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+//Middleware
+app.use(cors(corsOptions))
+app.use(express.json())
+app.use('/art', artController)
 
 
 //listening

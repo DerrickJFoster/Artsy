@@ -10,6 +10,6 @@ const artSchema = new Schema ({
   userid: String,
 }, {timestamps: true})
 
-const ArtModel = mongoose.model('Art', artSchema)
+const Art = mongoose.model('Art', artSchema)
 
-module.exports = ArtModel
+module.exports = Art
