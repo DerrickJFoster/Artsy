@@ -1,9 +1,13 @@
+//dependencies
 const express = require('express')
 const app = express()
-const PORT = 3003
+require('dotenv').config()
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+//Configuration
+const PORT = process.env.PORT
+const mongoURI = process.env.MONGODB_URI
 
 
 
