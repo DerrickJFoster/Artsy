@@ -17,6 +17,10 @@ mongoose.connection.once('open', ()=>{
 })
 
 
+app.get('/kickstART', (req, res) => {
+  res.send("Major Tom to Ground Control")
+})
+
 
 //listening
 app.listen(PORT, () => {
