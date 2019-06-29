@@ -24,19 +24,19 @@ mongoose.connection.once('open', ()=>{
 
 
 //CORS
-// const whitelist = ['http://localhost:3000'] //heroku link
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   }
-// }
+const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io/Artsy-Front-End/'] //heroku link
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 //Middleware
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/art', artController)
 app.use(session({
@@ -44,6 +44,9 @@ app.use(session({
   resave: false,
   saveUnititalized: false
 }))
+//deprecation
+mongoose.set('useNewUrlParser', true);
+
 
 
 //listening
