@@ -9,7 +9,7 @@ const session = require('express-session')
 
 //Configuration
 const PORT = process.env.PORT
-const mongoURI = process.env.MONGODB_URI
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/' + `kickstart-me`
 
 
 
