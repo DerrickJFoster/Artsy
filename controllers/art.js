@@ -24,5 +24,14 @@ art.post('/', (req, res) => {
   })
 })
 
+//DELETE
+art.delete('/:id', (req, res) => {
+  Art.findByIdAndRemove(req.params.id, (error, deleteArt) => {
+    if (error) {
+      res.status(400).json({error: error.message})
+    }
+    res.status(200).json(deleteArt)
+  })
+})
 
 module.exports = art
