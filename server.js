@@ -23,20 +23,20 @@ mongoose.connection.once('open', ()=>{
 })
 
 
-//CORS
-const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art'] //heroku link
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// CORS
+// const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art'] //heroku link
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 //Middleware
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/art', artController)
 app.use(session({
