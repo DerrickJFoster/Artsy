@@ -7,6 +7,8 @@ const cors = require('cors')
 const artController = require('./controllers/art.js')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
+const User = require('./models/users.js')
+
 
 //Configuration
 const PORT = process.env.PORT
@@ -25,19 +27,19 @@ mongoose.connection.once('open', ()=>{
 
 
 // CORS
-const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art', 'https://kickstart-me.herokuapp.com'] //heroku link
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+// const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art', 'https://kickstart-me.herokuapp.com'] //heroku link
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
 
 //Middleware
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/art', artController)
 app.use(session({
@@ -57,4 +59,17 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
   res.redirect('/art')
+})
+
+app.post('/register', (req, res) => {
+  const{username, password} = req.body;
+  const user = new User({username, password})
+  user.save((err) => {
+    if (err) {
+      res.status(500)
+      .send('Error on register, try again')
+    } else {
+      res.status(200).send("Registration complete!")
+    }
+  })
 })
