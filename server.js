@@ -8,6 +8,7 @@ const artController = require('./controllers/art.js')
 const session = require('express-session')
 const bcrypt = require('bcrypt')
 const User = require('./models/users.js')
+const usersController = require('./controllers/users.js')
 
 
 //Configuration
@@ -42,11 +43,13 @@ mongoose.connection.once('open', ()=>{
 // app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/art', artController)
+app.use('/users', usersController)
 app.use(session({
   secret: 'randomstring',
   resave: false,
   saveUnititalized: false
 }))
+app.use(express.urlencoded({extended:false}));
 //deprecation
 mongoose.set('useNewUrlParser', true);
 
@@ -59,17 +62,4 @@ app.listen(PORT, () => {
 
 app.get('/', (req, res) => {
   res.redirect('/art')
-})
-
-app.post('/register', (req, res) => {
-  const{username, password} = req.body;
-  const user = new User({username, password})
-  user.save((err) => {
-    if (err) {
-      res.status(500)
-      .send('Error on register, try again')
-    } else {
-      res.status(200).send("Registration complete!")
-    }
-  })
 })
