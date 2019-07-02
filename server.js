@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const artController = require('./controllers/art.js')
 const session = require('express-session')
+const bcrypt = require('bcrypt')
 
 //Configuration
 const PORT = process.env.PORT
@@ -23,8 +24,8 @@ mongoose.connection.once('open', ()=>{
 })
 
 
-//CORS
-const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art'] //heroku link
+// CORS
+const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art', 'https://kickstart-me.herokuapp.com'] //heroku link
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {

@@ -2,11 +2,12 @@
   "name": "artsy",
   "version": "1.0.0",
   "engines": {
-  "node": "12.3.1"
-},
+    "node": "12.3.1"
+  },
   "description": "kickstART",
   "main": "server.js",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
