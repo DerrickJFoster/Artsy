@@ -20,18 +20,23 @@ router.post('/', (req, res) => {
 })
 
 //log in
-// router.post('/login', (req, res) => {
-//   User.findOne({username: request.body.username}, (err, foundUser) => {
-//     if (err) {
-//       console.log(err)
-//       res.status(400).json({error: err.message})
-//     } else if (!foundUser) {
-//       res.status(400).json({error: err.message})
-//     } else if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-//       req.body.username: foundUser.username
-//     }
-//   })
-// })
+router.post('/login', (req, res) => {
+  User.findOne({username: req.body.username}, (err, foundUser) => {
+    if (err) {
+      console.log(err)
+      res.status(400).json({error: err.message})
+    } else if (!foundUser) {
+      res.status(200).json({error: "User name not found, try again"})
+    } else if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+      res.status(200).json({
+        id: foundUser._id,
+        username: foundUser.username
+      })
+    } else {
+      res.status(200).json({error: "Password incorrect, try again"})
+    }
+  })
+})
 
 
 module.exports = router;
