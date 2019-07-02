@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
     if (error) {
       res.status(400).json({error: error.message})
     }
-    res.status(200).json(newUser)
+    res.status(200).json(newUser._id)
   })
 })
 
