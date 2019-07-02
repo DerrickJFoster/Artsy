@@ -27,7 +27,7 @@ mongoose.connection.once('open', ()=>{
 })
 
 
-CORS
+//CORS
 const whitelist = ['http://localhost:3000', 'https://derrickjfoster.github.io', 'https://kickstart-me.herokuapp.com/art', 'https://kickstart-me.herokuapp.com'] //heroku link
 const corsOptions = {
   origin: function (origin, callback) {
