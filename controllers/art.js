@@ -9,7 +9,7 @@ art.get('/:id', (req, res) => {
       res.status(400).json({error: err.message})
     }
     res.status(200).json(foundArt)
-  })
+  }).sort({createdAt: -1})
 })
 
 
