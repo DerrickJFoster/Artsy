@@ -1,7 +1,6 @@
 const express = require('express')
 const art = express.Router()
 const Art = require('../models/art.js')
-const User = require('../models/users.js')
 
 //INDEX
 art.get('/:id', (req, res) => {
