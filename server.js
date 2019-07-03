@@ -5,8 +5,6 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const artController = require('./controllers/art.js')
-const session = require('express-session')
-const bcrypt = require('bcrypt')
 const User = require('./models/users.js')
 const usersController = require('./controllers/users.js')
 
@@ -44,11 +42,6 @@ app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/art', artController)
 app.use('/users', usersController)
-app.use(session({
-  secret: 'randomstring',
-  resave: false,
-  saveUnititalized: false
-}))
 //deprecation
 mongoose.set('useNewUrlParser', true);
 
