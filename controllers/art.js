@@ -4,8 +4,8 @@ const Art = require('../models/art.js')
 const User = require('../models/users.js')
 
 //INDEX
-art.get('/', (req, res) => {
-  Art.find({}, (error, foundArt) => {
+art.get('/:id', (req, res) => {
+  Art.find({userid: req.params.id}, (error, foundArt) => {
     if (error) {
       res.status(400).json({error: err.message})
     }
