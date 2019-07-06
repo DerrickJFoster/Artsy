@@ -1,6 +1,6 @@
 # Artsy
 Link to live site:
-https://derrickjfoster.github.io/Artsy-Front-End/
+https://derrickjfoster.github.io/search
 
 ![App Diagram](https://i.imgur.com/99hQL8L.png)
 
